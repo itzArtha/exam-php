@@ -11,42 +11,42 @@
 <body>
 <div class="container my-5">
 <h3 class="text-center">FORM UNTUK MENAMBAHKAN DATA PENERBIT BARU</h3>
-<form action="190030509-update.php" method="POST">
+<form action="190030509-save.php" method="POST">
 <div class="row">
   <div class="col-lg-6">
     <div class="form-group">
         <label for="namaid">Nama</label>
-        <input type="text" class="form-control" id="namaid" placeholder="Masukkan Nama" name="nama" required>
+        <input type="text" class="form-control" id="namaid" placeholder="Masukkan Nama" name="nama" >
     </div>
   </div>
   <div class="col-lg-6">
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="emailid" placeholder="Masukkan Email" name="email" required>
+        <input type="email" class="form-control" id="emailid" placeholder="Masukkan Email" name="email" >
     </div>
   </div>
   <div class="col-lg-6">
     <div class="form-group">
         <label for="kotaid">Kota</label>
-        <input type="text" class="form-control" id="kotaid" placeholder="Kota" name="kota" required>
+        <input type="text" class="form-control" id="kotaid" placeholder="Kota" name="kota" >
     </div>
   </div>
   <div class="col-lg-6">
     <div class="form-group">
         <label for="kontakid">Nama Kontak</label>
-        <input type="text" class="form-control" id="kontakid" placeholder="Masukkan Nama Kontak" name="kontak" required>
+        <input type="text" class="form-control" id="kontakid" placeholder="Masukkan Nama Kontak" name="kontak" >
     </div>
   </div>
   <div class="col-lg-6">
     <div class="form-group">
         <label for="hpid">HP</label>
-        <input type="text" class="form-control" id="hpid" placeholder="Masukkan No HP" name="phone" required>
+        <input type="text" class="form-control" id="hpid" placeholder="Masukkan No HP" name="phone" >
     </div>
   </div>
   <div class="col-lg-6">
     <div class="form-group">
         <label for="alamatid">Alamat</label>
-        <input type="text" class="form-control" id="alamatid" placeholder="Masukkan Alamat" name="alamat" required>
+        <input type="text" class="form-control" id="alamatid" placeholder="Masukkan Alamat" name="alamat" >
     </div>
   </div>
 </div>
