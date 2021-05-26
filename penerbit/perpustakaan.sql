@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2020 at 09:18 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Waktu pembuatan: 26 Bulan Mei 2021 pada 09.58
+-- Versi server: 10.4.17-MariaDB
+-- Versi PHP: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,19 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_buku`
+-- Struktur dari tabel `t_buku`
 --
 
 CREATE TABLE `t_buku` (
   `id_buku` varchar(11) NOT NULL,
-  `id_judul` int(4) NOT NULL DEFAULT '0',
+  `id_judul` int(4) NOT NULL DEFAULT 0,
   `id_user` varchar(5) NOT NULL,
-  `tgl_input` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` tinyint(4) NOT NULL DEFAULT '1'
+  `tgl_input` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `t_buku`
+-- Dumping data untuk tabel `t_buku`
 --
 
 INSERT INTO `t_buku` (`id_buku`, `id_judul`, `id_user`, `tgl_input`, `status`) VALUES
@@ -142,18 +141,18 @@ INSERT INTO `t_buku` (`id_buku`, `id_judul`, `id_user`, `tgl_input`, `status`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_judul`
+-- Struktur dari tabel `t_judul`
 --
 
 CREATE TABLE `t_judul` (
   `id_judul` int(4) NOT NULL,
   `judul` varchar(100) NOT NULL DEFAULT '-',
-  `id_kategori` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1'
+  `id_kategori` tinyint(1) NOT NULL DEFAULT 0,
+  `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `t_judul`
+-- Dumping data untuk tabel `t_judul`
 --
 
 INSERT INTO `t_judul` (`id_judul`, `judul`, `id_kategori`, `status`) VALUES
@@ -201,17 +200,17 @@ INSERT INTO `t_judul` (`id_judul`, `judul`, `id_kategori`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_kategori`
+-- Struktur dari tabel `t_kategori`
 --
 
 CREATE TABLE `t_kategori` (
   `id_kategori` tinyint(1) NOT NULL,
   `kategori` varchar(100) NOT NULL DEFAULT '-',
-  `status` tinyint(1) NOT NULL DEFAULT '1'
+  `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `t_kategori`
+-- Dumping data untuk tabel `t_kategori`
 --
 
 INSERT INTO `t_kategori` (`id_kategori`, `kategori`, `status`) VALUES
@@ -236,7 +235,7 @@ INSERT INTO `t_kategori` (`id_kategori`, `kategori`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_penerbit`
+-- Struktur dari tabel `t_penerbit`
 --
 
 CREATE TABLE `t_penerbit` (
@@ -251,7 +250,7 @@ CREATE TABLE `t_penerbit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `t_penerbit`
+-- Dumping data untuk tabel `t_penerbit`
 --
 
 INSERT INTO `t_penerbit` (`id_penerbit`, `nama`, `kota`, `contact_name`, `contact_phone`, `alamat`, `email`, `status`) VALUES
@@ -259,12 +258,13 @@ INSERT INTO `t_penerbit` (`id_penerbit`, `nama`, `kota`, `contact_name`, `contac
 (2, 'Elexmedia Komputindo', 'Jakarta', 'Mahendra Putra', '0821454658', 'Jl. Kebon Sirih 5', 'alex_media@gmail.com', 1),
 (3, 'Purnama Emas', 'Denpasar', 'Wahyuni Anggarawati', '08223445128', 'Jl. Raya Puputan No. 88', 'purnama.emas@gmail.com', 0),
 (4, 'Gagas Media', 'Jakarta', 'Sri Wulandari', '08216655445', 'Jl. Jagakarsa 33', 'gagas_media09@gmail.com', 1),
-(5, 'Gramedia Widiasarana Indonesia', 'Jakarta', 'Astuti', '082255588898', 'Jl. Palmerah No. 19', 'gramedia@gmail.com', 1);
+(5, 'Bambang Adi Saputra', 'Bangli', 'Bambang', '0822499888', 'Bandung', 'bams.bambang@gmail.com', 0),
+(6, 'Exova Indonesia', 'Bangli', 'Bambang', '081238169667', 'Jl. Nusantara', 'artha@exova.id', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_pengarang`
+-- Struktur dari tabel `t_pengarang`
 --
 
 CREATE TABLE `t_pengarang` (
@@ -278,7 +278,7 @@ CREATE TABLE `t_pengarang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `t_pengarang`
+-- Dumping data untuk tabel `t_pengarang`
 --
 
 INSERT INTO `t_pengarang` (`id_pengarang`, `nama`, `alamat`, `email`, `hp`, `status`, `foto`) VALUES
@@ -286,12 +286,13 @@ INSERT INTO `t_pengarang` (`id_pengarang`, `nama`, `alamat`, `email`, `hp`, `sta
 (2, 'Mahendra Putrayasa', 'Jimbaran', 'mahendra09@gmail.com', '08215988754', 0, 'user-2.png'),
 (3, 'Putu Aditama', 'Gianyar', 'aditama.putu@gmail.com', '08229985885', 0, 'user-2.png'),
 (4, 'Sukmawati', 'Denpasar', 'sukmawati99@gmail.com', '08215554455', 1, 'user-3.png'),
-(5, 'Bambang Adi Saputra', 'Bandung', 'bams.bambang@gmail.com', '0822499887878', 1, 'user-3.png');
+(5, 'Bambang Adi', 'Bandung', 'bams.bambang@gmail.com', '0822499887878', 1, 'user-3.png'),
+(15, 'Exova Indonesia', 'Jl. Nusantara', 'artha@exova.id', '081238169667', 1, 'poin.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_user`
+-- Struktur dari tabel `t_user`
 --
 
 CREATE TABLE `t_user` (
@@ -305,7 +306,7 @@ CREATE TABLE `t_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `t_user`
+-- Dumping data untuk tabel `t_user`
 --
 
 INSERT INTO `t_user` (`id_user`, `nama`, `password`, `email`, `hp`, `status`, `foto`) VALUES
@@ -319,70 +320,70 @@ INSERT INTO `t_user` (`id_user`, `nama`, `password`, `email`, `hp`, `status`, `f
 --
 
 --
--- Indexes for table `t_buku`
+-- Indeks untuk tabel `t_buku`
 --
 ALTER TABLE `t_buku`
   ADD PRIMARY KEY (`id_buku`);
 
 --
--- Indexes for table `t_judul`
+-- Indeks untuk tabel `t_judul`
 --
 ALTER TABLE `t_judul`
   ADD PRIMARY KEY (`id_judul`),
   ADD UNIQUE KEY `judul` (`judul`);
 
 --
--- Indexes for table `t_kategori`
+-- Indeks untuk tabel `t_kategori`
 --
 ALTER TABLE `t_kategori`
   ADD PRIMARY KEY (`id_kategori`),
   ADD UNIQUE KEY `kategori` (`kategori`);
 
 --
--- Indexes for table `t_penerbit`
+-- Indeks untuk tabel `t_penerbit`
 --
 ALTER TABLE `t_penerbit`
   ADD PRIMARY KEY (`id_penerbit`);
 
 --
--- Indexes for table `t_pengarang`
+-- Indeks untuk tabel `t_pengarang`
 --
 ALTER TABLE `t_pengarang`
   ADD PRIMARY KEY (`id_pengarang`);
 
 --
--- Indexes for table `t_user`
+-- Indeks untuk tabel `t_user`
 --
 ALTER TABLE `t_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `t_judul`
+-- AUTO_INCREMENT untuk tabel `t_judul`
 --
 ALTER TABLE `t_judul`
   MODIFY `id_judul` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `t_kategori`
+-- AUTO_INCREMENT untuk tabel `t_kategori`
 --
 ALTER TABLE `t_kategori`
   MODIFY `id_kategori` tinyint(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `t_penerbit`
+-- AUTO_INCREMENT untuk tabel `t_penerbit`
 --
 ALTER TABLE `t_penerbit`
-  MODIFY `id_penerbit` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_penerbit` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `t_pengarang`
+-- AUTO_INCREMENT untuk tabel `t_pengarang`
 --
 ALTER TABLE `t_pengarang`
-  MODIFY `id_pengarang` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pengarang` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

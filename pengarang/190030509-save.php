@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Import script dari sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 </html>
 <?php
+// Get file koneksi
 require "koneksi.php";
-
+// Get data id dari method POST
 $nama = $_POST['nama'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];

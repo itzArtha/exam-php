@@ -81,10 +81,15 @@
          </form>
       </div>
       <script>
+         // Untuk validasi form
          function cek_form(frm) {
+            // Jika value nama kosong maka kode dalam if dieksekusi
             if (frm.nama.value == "") {
+               // Alert jika data kosong
                alert("Silahkan lengkapi kolom Nama");
+               // Untuk mengatur fokus pada field
                frm.nama.focus();
+               // Mengembalikan data berupa false agar data tak tersubmit
                return false;
             } else if (frm.email.value == "") {
                alert("Silahkan lengkapi kolom Email");
@@ -107,6 +112,7 @@
             }
          }
       </script>
+      <!-- Footer -->
       <footer class="footer my-5">
          <div class="container">
             <span class="text-muted">ITB STIKOM BALI <?= date('Y') ?></span>

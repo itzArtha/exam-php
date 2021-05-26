@@ -1,4 +1,5 @@
 <?php 
+   // Mengambil file koneksi 
     require "koneksi.php";
     $query = "SELECT * FROM t_penerbit";
     $sql = mysqli_query($koneksi, $query);
@@ -6,8 +7,10 @@
 <!doctype html>
 <html>
    <head>
+      <!-- Encoding standar untuk UTF-8 -->
       <meta charset="utf-8">
       <title>Project UAS</title>
+      <!-- Scripts dan CSS diimport agar bisa digunakan di body -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -18,6 +21,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <body>
+      <!-- Section untuk jumbotron -->
       <section class="pt-4 bg-success">
          <div>
             <div class="container">
@@ -27,11 +31,13 @@
          </div>
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
       </section>
+      <!-- Container tempat content website -->
       <div class="container">
          <div class="text-right">
             <a href="../penerbit/190030509-add.php" class="btn btn-success" type="button"><i class="fa fa-user-plus"></i></a>
          </div>
          <br>
+         <!-- Tabel untuk menampilkan data -->
          <table class="table table-bordered table-striped">
             <thead>
                <th>No</th>
@@ -45,12 +51,15 @@
                <th>Action</th>
             </thead>
             <tbody>
+            <!-- PHP untuk looping data menggunakan while -->
                <?php
+                  // Looping angka untuk kolom 'No' 
                   $i = 1;
                   while($data = mysqli_fetch_array($sql)) { 
                      $status = ($data['status'] == 1) ? "ok.png" : "ko.png";
                   ?>
                <tr>
+                  <!-- Menampilkan data per-kolom -->
                   <td><?= $i ?></td>
                   <td><?= $data['nama'] ?></td>
                   <td><?= $data['email'] ?></td>
@@ -66,11 +75,13 @@
                      <a onclick="deleteData(<?= $data['id_penerbit'] ?>)" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                   </td>
                </tr>
+               <!-- Tutup while dan penambahan i untuk looping angka yang digunakan untuk 'No' -->
                <?php $i++; } ?>
             </tbody>
          </table>
       </div>
       <script>
+         // Function untuk memanggil alert sebelum delete data
          deleteData = (id) => {
             swal({
                title: "Apakah kamu yakin ?",
@@ -80,11 +91,13 @@
                dangerMode: true,
             }).then((willDelete) => {
                if (willDelete) {
+                  // Jika OK maka redirect ke back-end delete
                   window.location = "../penerbit/190030509-del.php?id=" + id;
                }
             });
          };
       </script>
+      <!-- Footer -->
       <footer class="footer my-5">
          <div class="container">
             <span class="text-muted">ITB STIKOM BALI <?= date('Y') ?></span>

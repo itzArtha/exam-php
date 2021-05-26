@@ -1,8 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
+/* Body font */
 body {
   font-family: Poppins;
 }
+/* Class untuk switch status */
 .switch {
   position: relative;
   display: inline-block;
